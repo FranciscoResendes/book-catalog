@@ -11,8 +11,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllBooks(): Observable<Book> {
-    return this.http.get<Book>(`${this.api}/books`);
+  public getAllBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.api}/books`);
   }
 
   public login(credentials: any) {
