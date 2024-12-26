@@ -23,9 +23,10 @@ public class RestApiController {
     @Autowired BookService bookService;
     @Autowired UsersService usersService;
     
-    @GetMapping
+    @GetMapping("/books")
     public ResponseEntity<List<Book>> getBooks() {
-        List<Book> books = null;
+        List<Book> books = bookService.getAllBooks();
+        System.out.println(books.size());
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
