@@ -1,10 +1,10 @@
-<form #frm="ngForm" (ngSubmit)="signIn(frm.value)">
+<form #frm="ngForm" (ngSubmit)="signIn(frm)">
     <h1>Sign in</h1>
     <div *ngIf="invalidLogin"> Username and password don't match</div>
-    <label for="">Username</label>
-    <input type="text" id="loginUsername">
-    <label for="">Password</label>
-    <input type="password" id="loginPassword">
+    <label for="username">Username</label>
+    <input type="text" id="loginUsername" name="username" ngModel>
+    <label for="password">Password</label>
+    <input type="password" id="loginPassword" name="password" ngModel>
     <button type="submit">Sign in</button>
 </form>
 
