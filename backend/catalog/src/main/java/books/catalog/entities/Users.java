@@ -22,6 +22,7 @@ public class Users {
     private List<Book> books;
     @Temporal(TemporalType.TIMESTAMP)  
     private Date created_at;
+    private String sessionId;
 
     public Users() {}
 
@@ -63,6 +64,10 @@ public class Users {
         return created_at;
     }
 
+    public String getSessionId() {
+        return sessionId;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -85,5 +90,9 @@ public class Users {
 
     public void addBooks(Book book) {
         this.books.add(book);
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 }
