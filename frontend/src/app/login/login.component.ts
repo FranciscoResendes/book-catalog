@@ -18,8 +18,10 @@ export class LoginComponent {
       username: form.value.username,
       password: form.value.password
     };
-    if(!this.authService.login(credentials)){
-      this.invalidLogin = true;
-    }
+    this.authService.login(credentials).subscribe(isValid => {
+      if (!isValid) {
+        this.invalidLogin = true;
+      }
+    });
   }
 }

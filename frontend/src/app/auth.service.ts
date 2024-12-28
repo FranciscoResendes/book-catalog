@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  
   constructor(private apiService: ApiService) { }
 
-  login(credentials: any): boolean {
-
-    let isValid = false;
-    this.apiService.login(credentials).subscribe(response => {
-      if (response.status === 200) {
-        console.log(response.result.token);
-        localStorage.setItem('token', response.result.token);
-        isValid = true;
-      }
-      return isValid;
-    });
-    return isValid;
+  login(credentials: any): Observable<boolean> {
+    return this.apiService.login(credentials).pipe(
+      map(response => {
+        if (response.token) {
+          console.log(response.token);
+          localStorage.setItem('token', response.token);
+          return true;
+        } 
+        else  return false;
+      })
+    );
   }
 
   isLoggedIn(){
