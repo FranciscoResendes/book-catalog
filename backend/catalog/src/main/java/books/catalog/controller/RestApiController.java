@@ -31,6 +31,18 @@ public class RestApiController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @GetMapping("/user")
+    public ResponseEntity<Users> validateSession(@RequestBody String jwt) {
+        String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
+        Users user = usersService.checkSessionId(sessionId);
+        
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+    }
+
     @PostMapping("/user")
     public ResponseEntity<String> getUser(@RequestBody Users credentials) {
         Users user = usersService.checkUser(credentials.getUsername(), credentials.getPassword());
@@ -41,7 +53,7 @@ public class RestApiController {
 
             usersService.updateUser(user);
             return new ResponseEntity<>(jwt, HttpStatus.OK);
-            
+
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
