@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import books.catalog.entities.Users;
 import books.catalog.repositories.UsersRepository;
-import books.catalog.utils.JwtGenarator;
+import books.catalog.utils.JwtGenerator;
 
 @Service
 public class UsersService {
@@ -21,6 +21,6 @@ public class UsersService {
     }
 
     public String createJwt(){
-        return JwtGenarator.generateJwt(JwtGenarator.generateSessionId());
+        return JwtGenerator.generateJwt(JwtGenerator.generateSessionId());
     }
 }

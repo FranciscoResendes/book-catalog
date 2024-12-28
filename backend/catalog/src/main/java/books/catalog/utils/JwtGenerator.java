@@ -9,7 +9,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.UUID;
 
-public class JwtGenarator {
+public class JwtGenerator {
 
     //private static final long EXPIRATION_TIME = 3600000; // 1 hour in milliseconds
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256); // Generate a secure key
