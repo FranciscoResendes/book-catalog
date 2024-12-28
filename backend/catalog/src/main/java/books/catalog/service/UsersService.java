@@ -20,6 +20,10 @@ public class UsersService {
         return usersRepository.findByUsernameAndPassword(username, password);
     }
 
+    public void updateUser(Users user) {
+        usersRepository.save(user);
+    }
+
     public String createJwt(){
         return JwtGenerator.generateJwt(JwtGenerator.generateSessionId());
     }

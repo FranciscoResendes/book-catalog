@@ -15,6 +15,7 @@ import books.catalog.entities.Book;
 import books.catalog.entities.Users;
 import books.catalog.service.BookService;
 import books.catalog.service.UsersService;
+import books.catalog.utils.JwtGenerator;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -32,7 +33,17 @@ public class RestApiController {
 
     @PostMapping("/user")
     public ResponseEntity<String> getUser(@RequestBody Users credentials) {
-        return  usersService.checkUser(credentials.getUsername(), credentials.getPassword()) != null ? 
-            new ResponseEntity<>(usersService.createJwt(), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        Users user = usersService.checkUser(credentials.getUsername(), credentials.getPassword());
+
+        if (user != null) {
+            String jwt = usersService.createJwt();
+            user.setSessionId(JwtGenerator.getSessionIdFromJwt(jwt));
+
+            usersService.updateUser(user);
+            return new ResponseEntity<>(jwt, HttpStatus.OK);
+            
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }
