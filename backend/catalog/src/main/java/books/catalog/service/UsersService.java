@@ -20,6 +20,10 @@ public class UsersService {
         return usersRepository.findByUsernameAndPassword(username, password);
     }
 
+    public Users checkSessionId(String sessionId) {
+        return usersRepository.findBySessionId(sessionId);
+    }
+
     public void updateUser(Users user) {
         usersRepository.save(user);
     }
