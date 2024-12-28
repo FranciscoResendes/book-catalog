@@ -31,9 +31,8 @@ public class RestApiController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<Users> getUser(@RequestBody Users credentials) {
-        Users user = usersService.checkUser(credentials.getUsername(), credentials.getPassword());
-        return  user != null ? 
-            new ResponseEntity<>(user, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<String> getUser(@RequestBody Users credentials) {
+        return  usersService.checkUser(credentials.getUsername(), credentials.getPassword()) != null ? 
+            new ResponseEntity<>(usersService.createJwt(), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
