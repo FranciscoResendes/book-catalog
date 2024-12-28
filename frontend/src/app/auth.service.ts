@@ -13,6 +13,7 @@ export class AuthService {
     let isValid = false;
     this.apiService.login(credentials).subscribe(response => {
       if (response.status === 200) {
+        console.log(response.result.token);
         localStorage.setItem('token', response.result.token);
         isValid = true;
       }
@@ -22,9 +23,17 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('token');
   }
+
   logout(){
-    localStorage.removeItem('token');
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.apiService.logout(token).subscribe(response => {
+        if (response.status === 200) {
+          localStorage.removeItem('token');
+        }
+      });
+    }
   }
 }
