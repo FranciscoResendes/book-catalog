@@ -15,7 +15,7 @@ export class ApiService {
     return this.http.get<Book[]>(`${this.api}/books`);
   }
 
-  public login(credentials: any) {
-    return this.http.post(`${this.api}/user`, credentials);
+  public login(credentials: { username: string, password: string }): Observable<any> {
+    return this.http.post<any>(`${this.api}/user`, credentials);
   }
 }
