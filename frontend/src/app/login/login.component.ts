@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   invalidLogin: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   signIn(form: NgForm) {
     const credentials = {
@@ -22,6 +23,7 @@ export class LoginComponent {
       if (!isValid) {
         this.invalidLogin = true;
       }
+      else this.router.navigate(['/user']);
     });
   }
 }
