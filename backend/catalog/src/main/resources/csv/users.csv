@@ -1,0 +1,6 @@
+id,username,password,email,role,createdAt
+1,admin,admin,admin@example.com,ROLE_ADMIN,2023-01-01
+2,user1,user1,user1@example.com,ROLE_USER,2023-01-01
+3,user2,user2,user2@example.com,ROLE_USER,2023-01-01
+4,user3,user3,user3@example.com,ROLE_USER,2023-01-01
+5,user4,user4,user4@example.com,ROLE_USER,2023-01-01
