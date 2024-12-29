@@ -17,8 +17,9 @@ export class UserComponent {
     const token = this.authServ.isLoggedIn();
     if(token){
       this.apiServ.getUserInfo(token).subscribe(response => {
-        this.currentUser = response;
-        console.log(this.currentUser);
+        if(response) this.currentUser = response
+
+        else this.authServ.logout();
       });
     }
     }
