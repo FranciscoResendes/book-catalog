@@ -62,7 +62,7 @@ public class RestApiController {
     }
 
     @DeleteMapping("/user")
-    public ResponseEntity<String> deleteUser(@RequestBody String jwt) {
+    public ResponseEntity<String> deleteUserSession(@RequestHeader("Logout") String jwt) {
         String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
         Users user = usersService.checkSessionId(sessionId);
 
