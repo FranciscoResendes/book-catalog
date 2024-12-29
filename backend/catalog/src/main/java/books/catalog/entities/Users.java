@@ -1,5 +1,6 @@
 package books.catalog.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,13 +27,13 @@ public class Users {
 
     public Users() {}
 
-    public Users(long id, String username, String password, String email, String role, List<Book> books, Date created_at) {
+    public Users(long id, String username, String password, String email, String role, Date created_at) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
-        this.books = books;
+        this.books = new ArrayList<>();
         this.created_at = created_at;
     }
 
@@ -90,6 +91,10 @@ public class Users {
 
     public void addBooks(Book book) {
         this.books.add(book);
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
     public void setSessionId(String sessionId) {
