@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { catchError, map, Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   login(credentials: any): Observable<boolean> {
     return this.apiService.login(credentials).pipe(
       map(response => {
         if (response.token) {
-          console.log(response.token);
           localStorage.setItem('token', response.token);
           return true;
         } 
@@ -30,10 +30,11 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (token) {
       this.apiService.logout(token).subscribe(response => {
-        if (response.status === 200) {
-          localStorage.removeItem('token');
-        }
+          localStorage.removeItem('token'); //when server is completed, check if status is 200
+          this.router.navigate(['/home']);
       });
     }
+
+
   }
 }
