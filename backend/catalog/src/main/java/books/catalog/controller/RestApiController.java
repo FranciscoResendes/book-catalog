@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import books.catalog.entities.Book;
@@ -33,7 +34,7 @@ public class RestApiController {
     }
 
     @GetMapping("/user")
-    public ResponseEntity<Users> validateSession(@RequestBody String jwt) {
+    public ResponseEntity<Users> validateSession(@RequestHeader("Authorization") String jwt) {
         String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
         Users user = usersService.checkSessionId(sessionId);
 
@@ -53,7 +54,7 @@ public class RestApiController {
             user.setSessionId(JwtGenerator.getSessionIdFromJwt(jwt));
 
             usersService.updateUser(user);
-            return new ResponseEntity<>(jwt, HttpStatus.OK);
+            return new ResponseEntity<>("{\"token\": \"" + jwt + "\"}", HttpStatus.OK);
 
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
