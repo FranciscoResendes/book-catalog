@@ -11,6 +11,9 @@ import { lastValueFrom } from 'rxjs';
 export class MainComponent {
   public books: Book[] = [];
 
+  public selectedBook?: Book = undefined;
+  public showPopup: boolean = false;
+
   constructor(private apiServ: ApiService){}
 
   ngOnInit(){
@@ -24,5 +27,19 @@ export class MainComponent {
     }catch(e){
       console.log(e);
     }
+  }
+
+  openAddPopup(book: Book){
+    this.selectedBook = book;
+    this.showPopup = true;
+  }
+
+  submitAddBook(){
+
+  }
+
+  closePopup(){
+    this.showPopup = false;
+    this.selectedBook = undefined;
   }
 }
