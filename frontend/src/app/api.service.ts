@@ -26,8 +26,12 @@ export class ApiService {
   }
 
   public logout(jwt: string): Observable<any> {
-    const headers = new HttpHeaders().set('Logout', jwt);
+    const headers = new HttpHeaders().set('Authorization', jwt);
     return this.http.delete<any>(`${this.api}/logout`, { headers });
   }
 
+  public addBook(jwt: string, book: Book): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.post<any>(`${this.api}/books`, book, { headers });
+  }
 }
