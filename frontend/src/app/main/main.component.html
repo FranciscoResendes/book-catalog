@@ -1,15 +1,28 @@
 <h1>Book catalog</h1>
 <div *ngFor="let book of books">
     <h2>{{ book.title }}</h2>
-    <button (click)="openAddPopup(book)">add to list</button>
+    <button *ngIf="this.authService.isLoggedIn()" (click)="openAddPopup(book)">add to list</button>
 </div>
-<div ngIf="showPopup">
+<div class="popup" *ngIf="showPopup">
+    <div class="popup-content">
     <h2>{{selectedBook?.title}}</h2>
-    <form #frm="ngForm" (ngSubmit)="submitAddBook()">
-        <label for="">Status:</label>
+    <form #frm="ngForm" (ngSubmit)="submitAddBook(frm)">
+        <label for="status">Status:</label>
+        <select name="" id="status" >
+            <option value="read">Read</option>
+            <option value="reading">Reading</option>
+            <option value="paused">Paused</option>
+            <option value="wantToRead">Want to read</option>
+            <option value="dropped">Dropped</option>
+        </select>
         <label for="">Score:</label>
+        <input type="number" name="score" id="score"  min="0" max="10">
+
         <label for="">Chapters Read:</label>
-        <button type="submit">Add</button>
-        <button type="button" (click)="closePopup()">Close</button>
+        <input type="number" name="chaptersRead" id="chaptersRead"  min="0">
+        
+        <button type="submit" (click)="closePopup()">Add</button>
+        <button type="button" (click)="closePopup()">Cancel</button>
     </form>
+</div>
 </div>
