@@ -33,6 +33,22 @@ public class RestApiController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @PostMapping("/books")
+    public ResponseEntity<String> addBook(@RequestHeader("Authorization") String jwt, @RequestBody Book book) {
+        String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
+        Users user = usersService.checkSessionId(sessionId);
+
+        if(user != null) {
+            user.addBooks(book);
+            usersService.updateUser(user);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+    }
+    
+
     @GetMapping("/user")
     public ResponseEntity<Users> validateSession(@RequestHeader("Authorization") String jwt) {
         String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
