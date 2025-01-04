@@ -104,4 +104,18 @@ public class RestApiController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
+
+    @DeleteMapping("/logout")
+    public ResponseEntity<String> logout(@RequestHeader("Authorization") String jwt) {
+        String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
+        Users user = usersService.checkSessionId(sessionId);
+
+        if (user != null) {
+            user.setSessionId(null);
+            usersService.updateUser(user);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+    }
 }
