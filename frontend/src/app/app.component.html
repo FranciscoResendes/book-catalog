@@ -1,5 +1,8 @@
 <nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/login">Login</a>
+  <a routerLink="/">Home </a>
+  <a *ngIf="!this.authService.isLoggedIn()" routerLink="/login">Login </a>
+  <a *ngIf="this.authService.isLoggedIn()" (click)="this.authService.logout()" routerLink="/login">Logout </a>
+  <a routerLink="/user">User page </a>
+  
 </nav>
 <router-outlet></router-outlet>

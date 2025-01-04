@@ -31,7 +31,7 @@ export class AuthService {
     if (token) {
       this.apiService.logout(token).subscribe(response => {
           localStorage.removeItem('token'); //when server is completed, check if status is 200
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
       });
     }
 
