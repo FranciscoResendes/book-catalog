@@ -29,18 +29,32 @@ public class RestApiController {
     @GetMapping("/books")
     public ResponseEntity<List<Book>> getBooks() {
         List<Book> books = bookService.getAllBooks();
-        System.out.println(books.size());
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
     @PostMapping("/books")
     public ResponseEntity<String> addBook(@RequestHeader("Authorization") String jwt, @RequestBody Book book) {
+
         String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
         Users user = usersService.checkSessionId(sessionId);
 
+        Book updatedBook = bookService.getBookByIsbn(book.getIsbn());
+
+
+        if(updatedBook == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        
+        updatedBook.setStatus(book.getStatus());
+        updatedBook.setChaptersRead(book.getChaptersRead());
+        updatedBook.setScore(book.getScore());
+
+
         if(user != null) {
-            user.addBooks(book);
+            user.addBooks(updatedBook);
+
             usersService.updateUser(user);
+
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
