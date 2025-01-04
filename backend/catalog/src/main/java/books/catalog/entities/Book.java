@@ -11,17 +11,24 @@ public class Book {
     private String title;
     private String author;
     private String genre;
-    private int pages;
+    private int totalChapters;
+    private int chaptersRead;
+    private String status;
+    private int score;
 
     public Book() {}
 
-    public Book(long id, String isbn, String title, String author, String genre, int pages) {
+    public Book(long id, String isbn, String title, String author, String genre, int totalChapters) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.pages = pages;
+        this.totalChapters = totalChapters;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getIsbn() {
@@ -40,8 +47,20 @@ public class Book {
         return genre;
     }
 
-    public int getPages() {
-        return pages;
+    public int getTotalChapters() {
+        return totalChapters;
+    }
+
+    public int getChaptersRead() {
+        return chaptersRead;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public void setIsbn(String isbn) {
@@ -60,8 +79,19 @@ public class Book {
         this.genre = genre;
     }
 
-    public void setPages(int pages) {
-        this.pages = pages;
+    public void setTotalChapters(int totalChapters) {
+        this.totalChapters = totalChapters;
     }
 
+    public void setChaptersRead(int chaptersRead) {
+        this.chaptersRead = chaptersRead;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
