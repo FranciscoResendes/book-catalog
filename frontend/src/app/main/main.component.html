@@ -5,24 +5,24 @@
 </div>
 <div class="popup" *ngIf="showPopup">
     <div class="popup-content">
-    <h2>{{selectedBook?.title}}</h2>
-    <form #frm="ngForm" (ngSubmit)="submitAddBook(frm)">
-        <label for="status">Status:</label>
-        <select name="" id="status" >
-            <option value="read">Read</option>
-            <option value="reading">Reading</option>
-            <option value="paused">Paused</option>
-            <option value="wantToRead">Want to read</option>
-            <option value="dropped">Dropped</option>
-        </select>
-        <label for="">Score:</label>
-        <input type="number" name="score" id="score"  min="0" max="10">
+        <h2>{{selectedBook?.title}}</h2>
+        <form #frm="ngForm" (ngSubmit)="submitAddBook(frm)">
+            <label for="status">Status:</label>
+            <select ngModel name="status" id="status" >
+                <option value="read">Read</option>
+                <option value="reading">Reading</option>
+                <option value="paused">Paused</option>
+                <option value="wantToRead">Want to read</option>
+                <option value="dropped">Dropped</option>
+            </select>
+            <label for="score">Score:</label>
+            <input type="number" ngModel name="score" id="score" min="0" max="10">
 
-        <label for="">Chapters Read:</label>
-        <input type="number" name="chaptersRead" id="chaptersRead"  min="0">
-        
-        <button type="submit" (click)="closePopup()">Add</button>
-        <button type="button" (click)="closePopup()">Cancel</button>
-    </form>
-</div>
+            <label for="chaptersRead">Chapters Read:</label>
+            <input type="number" ngModel name="chaptersRead" id="chaptersRead" min="0">
+            
+            <button type="submit" >Add</button>
+            <button type="button" (click)="closePopup()">Cancel</button>
+        </form>
+    </div>
 </div>

@@ -25,7 +25,6 @@ export class MainComponent {
   public async getBooks(){
     try{
       this.books = await lastValueFrom(this.apiServ.getAllBooks());
-      console.log(this.books);
     }catch(e){
       console.log(e);
     }
@@ -37,9 +36,8 @@ export class MainComponent {
   }
 
   submitAddBook(frm: NgForm){
-    console.log(frm.value);
+
     const book = {
-      id: this.selectedBook?.id ?? 0,
       //img: this.selectedBook?.img, ?? ''
       isbn: this.selectedBook?.isbn ?? '',
       title: frm.value.title,
@@ -50,6 +48,7 @@ export class MainComponent {
       pages: this.selectedBook?.pages ?? 0,
       score: this.selectedBook?.score ?? 0,
     };
+
     const jwt = this.authService.isLoggedIn();
     if (jwt) {
       this.apiServ.addBook(jwt, book).subscribe(response => {
@@ -61,6 +60,9 @@ export class MainComponent {
     else{
       console.log("You are not logged in");
     } 
+
+    this.showPopup = false;
+    this.selectedBook = undefined;
   }
 
   closePopup(){
