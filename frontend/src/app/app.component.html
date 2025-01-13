@@ -3,6 +3,6 @@
   <a *ngIf="!this.authService.isLoggedIn()" routerLink="/login">Login </a>
   <a *ngIf="this.authService.isLoggedIn()" (click)="this.authService.logout()" routerLink="/login">Logout </a>
   <a routerLink="/user">User page </a>
-  
+  <input type="text" placeholder="Search">
 </nav>
 <router-outlet></router-outlet>
