@@ -1,7 +1,9 @@
 <h1>Book catalog</h1>
-<div *ngFor="let book of books">
-    <h2>{{ book.title }}</h2>
-    <button *ngIf="this.authService.isLoggedIn()" (click)="openAddPopup(book)">add to list</button>
+<div id="all_book_list">
+    <div *ngFor="let book of books">
+        <h2>{{ book.title }}</h2>
+        <button *ngIf="this.authService.isLoggedIn()" (click)="openAddPopup(book)">add to list</button>
+    </div>
 </div>
 <div class="popup" *ngIf="showPopup">
     <div class="popup-content">
