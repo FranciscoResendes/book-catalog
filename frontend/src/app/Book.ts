@@ -7,4 +7,5 @@ export interface Book {
     chaptersRead: number;
     status: string;
     score: number;
+    synopsis: string;
 }

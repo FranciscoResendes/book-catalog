@@ -15,6 +15,7 @@ public class Book {
     private int chaptersRead;
     private String status;
     private int score;
+    private String synopsis;
 
     public Book() {}
 
@@ -63,6 +64,10 @@ public class Book {
         return score;
     }
 
+    public String getSynopsis() {
+        return synopsis;
+    }
+
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
@@ -93,5 +98,9 @@ public class Book {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 }
