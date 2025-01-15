@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Book } from '../Book';
 import { ApiService } from '../api.service';
-import { generate, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -16,7 +17,7 @@ export class MainComponent {
   public selectedBook?: Book = undefined;
   public showPopup: boolean = false;
 
-  constructor(private apiServ: ApiService, public authService: AuthService){}
+  constructor(private apiServ: ApiService, public authService: AuthService, private router: Router){}
 
   ngOnInit(){
     this.getBooks();
@@ -47,6 +48,7 @@ export class MainComponent {
       chaptersRead: frm.value.chaptersRead,
       pages: this.selectedBook?.pages ?? 0,
       score: this.selectedBook?.score ?? 0,
+      synopsis: this.selectedBook?.synopsis ?? '',
     };
 
     const jwt = this.authService.isLoggedIn();
@@ -68,5 +70,9 @@ export class MainComponent {
   closePopup(){
     this.showPopup = false;
     this.selectedBook = undefined;
+  }
+
+  goToBook(book: Book){
+    this.router.navigate(['/book', book.isbn]);
   }
 }
