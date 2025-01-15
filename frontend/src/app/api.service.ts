@@ -34,4 +34,8 @@ export class ApiService {
     const headers = new HttpHeaders().set('Authorization', jwt);
     return this.http.post<any>(`${this.api}/books`, book, { headers });
   }
+
+  public getBookByIsbn(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`${this.api}/books/${isbn}`);
+  }
 }
