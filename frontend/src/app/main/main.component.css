@@ -3,6 +3,10 @@
   grid-template-columns: auto auto auto auto;
 }
 
+.book:hover {
+  border: 1px solid white;
+}
+
 .popup {
     position: fixed;
     top: 0;
