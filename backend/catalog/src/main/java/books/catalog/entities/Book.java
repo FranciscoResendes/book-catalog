@@ -103,4 +103,9 @@ public class Book {
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((Book) obj).getId() == this.id;
+    }
 }
