@@ -90,6 +90,8 @@ public class Users {
     }
 
     public void addBooks(Book book) {
+        if(this.books.contains(book))  this.books.remove(book);
+
         this.books.add(book);
     }
 
