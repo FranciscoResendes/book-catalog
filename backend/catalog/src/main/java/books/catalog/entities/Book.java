@@ -3,6 +3,7 @@ package books.catalog.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -13,7 +14,8 @@ public class Book {
     private String isbn;
     
     private String title;
-    private String author;
+    @ManyToOne
+    private Author author;
     private String genre;
     private int totalChapters;
     private int chaptersRead;
@@ -24,7 +26,7 @@ public class Book {
 
     public Book() {}
 
-    public Book(long id, String isbn, String title, String author, String genre, int totalChapters) {
+    public Book(long id, String isbn, String title, Author author, String genre, int totalChapters) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -45,7 +47,7 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -85,7 +87,7 @@ public class Book {
         this.title = title;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
