@@ -2,6 +2,7 @@
 <div id="all_book_list">
     <div *ngFor="let book of books" class="book" >
         <div (click)="goToBook(book)">
+            <img [src]="book.cover" alt="">
             <h2>{{ book.title }}</h2>
         </div>
         <button *ngIf="this.authService.isLoggedIn()" (click)="openAddPopup(book)">add to list</button>
