@@ -53,6 +53,7 @@ public class DataLoaderService {
                 Book book = new Book(
                     Long.parseLong(row[0]), row[1], row[2], row[3], row[4], Integer.parseInt(row[5])
                 );
+                book.setCover(row[6]);
                 bookRepo.save(book);
             }
         } catch (IOException | CsvException e) {
