@@ -39,7 +39,6 @@ export class MainComponent {
   submitAddBook(frm: NgForm){
 
     const book = {
-      //img: this.selectedBook?.img, ?? ''
       isbn: this.selectedBook?.isbn ?? '',
       title: frm.value.title,
       author: this.selectedBook?.author ?? '',
@@ -49,6 +48,7 @@ export class MainComponent {
       pages: this.selectedBook?.pages ?? 0,
       score: this.selectedBook?.score ?? 0,
       synopsis: this.selectedBook?.synopsis ?? '',
+      cover: this.selectedBook?.cover ?? ''
     };
 
     const jwt = this.authService.isLoggedIn();

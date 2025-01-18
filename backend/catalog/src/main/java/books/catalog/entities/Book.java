@@ -1,5 +1,6 @@
 package books.catalog.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -7,7 +8,10 @@ import jakarta.persistence.Id;
 public class Book {
     @Id
     private long id;
+
+    @Column(unique = true, nullable = false)
     private String isbn;
+    
     private String title;
     private String author;
     private String genre;
@@ -16,6 +20,7 @@ public class Book {
     private String status;
     private int score;
     private String synopsis;
+    private String cover;
 
     public Book() {}
 
@@ -68,6 +73,10 @@ public class Book {
         return synopsis;
     }
 
+    public String getCover() {
+        return cover;
+    }
+
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
@@ -102,6 +111,10 @@ public class Book {
 
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     @Override

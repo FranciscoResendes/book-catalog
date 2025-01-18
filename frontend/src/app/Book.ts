@@ -8,4 +8,5 @@ export interface Book {
     status: string;
     score: number;
     synopsis: string;
+    cover: string;
 }
