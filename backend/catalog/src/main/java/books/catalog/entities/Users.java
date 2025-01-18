@@ -1,14 +1,12 @@
 package books.catalog.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 public class Users {
@@ -21,13 +19,12 @@ public class Users {
     private String role;
     @OneToMany
     private List<Book> books;
-    @Temporal(TemporalType.TIMESTAMP)  
-    private Date created_at;
+    private LocalDate created_at;
     private String sessionId;
 
     public Users() {}
 
-    public Users(long id, String username, String password, String email, String role, Date created_at) {
+    public Users(long id, String username, String password, String email, String role, LocalDate created_at) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -61,7 +58,7 @@ public class Users {
         return books;
     }
 
-    public Date getCreated_at() {
+    public LocalDate getCreated_at() {
         return created_at;
     }
 
@@ -95,7 +92,7 @@ public class Users {
         this.books.add(book);
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDate created_at) {
         this.created_at = created_at;
     }
 
