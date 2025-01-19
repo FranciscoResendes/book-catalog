@@ -3,7 +3,6 @@ package books.catalog.service;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ import books.catalog.repositories.UsersRepository;
 public class DataLoaderService {
     private static final String USERS_CSV = "csv/users.csv";
     private static final String BOOKS_CSV = "csv/books.csv";
-    private static final String AUTHORS_CSV = "csv/authors.csv";
+    private static final String AUTHORS_CSV = "csv/author.csv";
 
     @Autowired 
     private UsersRepository userRepo;
