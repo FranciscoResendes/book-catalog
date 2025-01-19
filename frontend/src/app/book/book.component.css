@@ -1,0 +1,16 @@
+#book-detail{
+    display: grid;
+    grid-template-areas:
+    "img h1"
+    "img p"
+    "img p";
+    grid-template-columns: 1fr 5fr;
+    margin-top: 2%;
+    column-gap: 1%;
+}
+
+img{
+    width: 200px;
+    height: 300px;
+    grid-area: img;
+}
