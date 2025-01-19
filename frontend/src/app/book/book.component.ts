@@ -19,8 +19,7 @@ export class BookComponent {
   }
 
   getBookByIsbn(){
-    this.route.paramMap.subscribe(params => {
-      const isbn = params.get('isbn');
+      const isbn = this.route.snapshot.paramMap.get('isbn');
       if(isbn){
         this.apiServ.getBookByIsbn(isbn).subscribe(response => {
           if (response) {
@@ -28,6 +27,5 @@ export class BookComponent {
           }
         });
       }
-    });
   }
 }
