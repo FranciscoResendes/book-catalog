@@ -15,14 +15,16 @@ import jakarta.persistence.Id;
     private String name;
     private String bio;
     private LocalDate born;
+    private String photo;
 
     public Author() {}
 
-    public Author(Long id, String name, String bio, LocalDate born) {
+    public Author(Long id, String name, String bio, LocalDate born, String photo) {
         this.id = id;
         this.name = name;
         this.bio = bio;
         this.born = born;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -41,6 +43,10 @@ import jakarta.persistence.Id;
         return born;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -52,5 +58,8 @@ import jakarta.persistence.Id;
     public void setBorn(LocalDate born) {
         this.born = born;
     }
-    
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    } 
 }
