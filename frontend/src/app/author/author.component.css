@@ -1,6 +1,32 @@
 .authors{
     display: grid;
-    grid-template-columns: auto;
+    grid-template-areas: 
+    "header header"
+    "image p"
+    "image p";
+    grid-template-columns: 1fr 4fr;
     border: 1px solid yellow;
     border-radius: 10px;
+    margin: 0px 15%;
+    position: relative;
 }
+
+.authors:hover {
+    box-shadow: 5px 5px 20px 20px white; /* Add shading to the border on hover */
+    z-index: 1;
+
+}
+
+img{
+    width: 130px;
+    height: 150px;
+    border-radius: 10px;
+    z-index: 0;
+    position: relative;
+}
+
+h1{
+    text-align: center;
+    /*grid-area: header;*/
+}
+

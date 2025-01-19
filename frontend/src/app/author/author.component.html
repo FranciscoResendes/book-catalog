@@ -1,5 +1,8 @@
 <h1>Authors</h1>
 <div *ngFor="let author of authors" (click)="goToAuthor(author.name)" class="authors">
-    <p>{{ author.name }}</p>
-    <p>{{ author.born }}</p>
+    <img [src]="author.photo" alt="">
+    <div class="author-info">
+        <h2>{{ author.name }}</h2>
+        <p>{{ author.born }}</p>
+    </div>
 </div>
