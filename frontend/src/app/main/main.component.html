@@ -1,6 +1,6 @@
 <h1>Book catalog</h1>
 <div id="all_book_list">
-    <div *ngFor="let book of books" class="book" >
+    <div *ngFor="let book of books" class="book" tabindex="0">
         <div (click)="goToBook(book)">
             <img [src]="book.cover" alt="">
             <h2>{{ book.title }}</h2>

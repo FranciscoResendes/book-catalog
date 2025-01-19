@@ -1,5 +1,5 @@
 <h1>Authors</h1>
-<div *ngFor="let author of authors" (click)="goToAuthor(author.name)" class="authors">
+<div *ngFor="let author of authors" (click)="goToAuthor(author.name)" class="authors" tabindex="0">
     <img [src]="author.photo" alt="">
     <div class="author-info">
         <h2>{{ author.name }}</h2>
