@@ -19,6 +19,7 @@ public class CatalogApplication {
         return (args) -> {
             dataLoaderService.loadUsersFromCsv();
             dataLoaderService.loadBooksFromCsv();
+            dataLoaderService.loadAuthorsFromCsv();
         };
     }
 }
