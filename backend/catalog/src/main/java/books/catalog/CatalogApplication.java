@@ -18,8 +18,8 @@ public class CatalogApplication {
     public CommandLineRunner demo(DataLoaderService dataLoaderService) {
         return (args) -> {
             dataLoaderService.loadUsersFromCsv();
-            dataLoaderService.loadBooksFromCsv();
             dataLoaderService.loadAuthorsFromCsv();
+            dataLoaderService.loadBooksFromCsv();
         };
     }
 }
