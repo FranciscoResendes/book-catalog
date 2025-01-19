@@ -1,2 +1,7 @@
-<p>author-detail works!</p>
-<p *ngIf="chosenAuthor">{{chosenAuthor.name}}</p>
+<div id="author-detail">
+    <img [src]="chosenAuthor.photo" alt="">
+    <h1>{{chosenAuthor.name}}</h1>
+    <p>Birth: {{chosenAuthor.born}}</p>
+    <p>{{chosenAuthor.bio}}</p>
+</div>
+
