@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { UserComponent } from './user/user.component';
 import { BookComponent } from './book/book.component';
+import { AuthorComponent } from './author/author.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BookComponent } from './book/book.component';
     LoginComponent,
     MainComponent,
     UserComponent,
-    BookComponent
+    BookComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,
