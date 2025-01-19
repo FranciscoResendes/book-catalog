@@ -43,4 +43,8 @@ export class ApiService {
   public getAllAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(`${this.api}/authors`);
   }
+
+  public getAuthorByName(name: string): Observable<Author> {
+    return this.http.get<Author>(`${this.api}/authors/${name}`);
+  }
 }

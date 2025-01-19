@@ -48,12 +48,10 @@ public class RestApiController {
 
     @PostMapping("/books")
     public ResponseEntity<String> addBook(@RequestHeader("Authorization") String jwt, @RequestBody Book book) {
-
         String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
         Users user = usersService.checkSessionId(sessionId);
 
         Book updatedBook = bookService.getBookByIsbn(book.getIsbn());
-
 
         if(updatedBook == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -63,10 +61,8 @@ public class RestApiController {
         updatedBook.setChaptersRead(book.getChaptersRead());
         updatedBook.setScore(book.getScore());
 
-
         if(user != null) {
             user.addBooks(updatedBook);
-
             usersService.updateUser(user);
 
             return new ResponseEntity<>(HttpStatus.OK);
@@ -136,10 +132,16 @@ public class RestApiController {
     @GetMapping("/authors")
     public ResponseEntity<List<Author>> getAuthors() {
         List<Author> authors = authorService.getAllAuthors();
-        System.out.println("---" + authors.get(0).getName());
-        System.out.println("---" + authors.get(0).getBorn());
         return new ResponseEntity<>(authors, HttpStatus.OK);
     }
 
-
+    @GetMapping("/authors/{name}")
+    public ResponseEntity<Author> getAuthorByName(@PathVariable String name) {
+        Author author = authorService.getAuthorByName(name);
+        if (author != null) {
+            return new ResponseEntity<>(author, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
