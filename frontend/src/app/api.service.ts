@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from './Book';
 import { User } from './User';
+import { Author } from './Author';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,9 @@ export class ApiService {
 
   public getBookByIsbn(isbn: string): Observable<Book> {
     return this.http.get<Book>(`${this.api}/books/${isbn}`);
+  }
+
+  public getAllAuthors(): Observable<Author[]> {
+    return this.http.get<Author[]>(`${this.api}/authors`);
   }
 }

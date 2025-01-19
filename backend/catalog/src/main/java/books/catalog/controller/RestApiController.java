@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import books.catalog.entities.Author;
 import books.catalog.entities.Book;
 import books.catalog.entities.Users;
+import books.catalog.service.AuthorService;
 import books.catalog.service.BookService;
 import books.catalog.service.UsersService;
 import books.catalog.utils.JwtGenerator;
@@ -26,6 +28,7 @@ public class RestApiController {
 
     @Autowired BookService bookService;
     @Autowired UsersService usersService;
+    @Autowired AuthorService authorService;
 
     @GetMapping("/books/{isbn}")
     public ResponseEntity<Book> getBookByIsbn(@PathVariable String isbn) {
@@ -129,4 +132,14 @@ public class RestApiController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
+
+    @GetMapping("/authors")
+    public ResponseEntity<List<Author>> getAuthors() {
+        List<Author> authors = authorService.getAllAuthors();
+        System.out.println("---" + authors.get(0).getName());
+        System.out.println("---" + authors.get(0).getBorn());
+        return new ResponseEntity<>(authors, HttpStatus.OK);
+    }
+
+
 }
