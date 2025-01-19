@@ -56,7 +56,7 @@ public class DataLoaderService {
 
             for (String[] row : rows) {
                 Author author = new Author(
-                    Long.parseLong(row[0]), row[1], row[2], LocalDate.parse(row[3])
+                    Long.parseLong(row[0]), row[1], row[2], LocalDate.parse(row[3]), row[4]
                 );
                 authorRepo.save(author);
             }
