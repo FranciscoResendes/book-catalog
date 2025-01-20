@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="!isLoginPage()">
   <a routerLink="/">Home </a>
   <a routerLink="/authors">Authors </a>
   <a *ngIf="!this.authService.isLoggedIn()" routerLink="/login">Login </a>
