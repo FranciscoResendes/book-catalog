@@ -26,4 +26,8 @@ export class LoginComponent {
       else this.router.navigate(['/user']);
     });
   }
+
+  goBack(){
+    this.router.navigate(['/']);
+  }
 }
