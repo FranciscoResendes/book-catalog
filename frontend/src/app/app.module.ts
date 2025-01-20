@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { BookComponent } from './book/book.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthorDetailComponent } from './author-detail/author-detail.component';
     UserComponent,
     BookComponent,
     AuthorComponent,
-    AuthorDetailComponent
+    AuthorDetailComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
