@@ -1,1 +1,12 @@
-<p>register works!</p>
+<i (click)="goBack()" tabindex="0">&#8592;</i>
+<form #frm="ngForm" (ngSubmit)="register(frm)">
+    <h1>Register</h1>
+    <!--<div *ngIf="invalidLogin"> Username and password don't match</div>-->
+    <label for="username">Username</label>
+    <input type="text" id="registerUsername" name="username" ngModel required>
+    <label for="email">Email</label>
+    <input type="text" id="registerEmail" name="email" ngModel required>
+    <label for="password">Password</label>
+    <input type="password" id="registerPassword" name="password" ngModel required>
+    <button type="submit">Login</button>
+</form>
