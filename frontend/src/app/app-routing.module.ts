@@ -7,6 +7,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { BookComponent } from './book/book.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'user', component: UserComponent, canActivate: [AuthGuardService]},
   {path: 'book/:isbn', component: BookComponent},
   {path: 'authors', component: AuthorComponent},
-  {path: 'author/:name', component: AuthorDetailComponent}
+  {path: 'author/:name', component: AuthorDetailComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
