@@ -40,7 +40,7 @@ public class DataLoaderService {
 
             for (String[] row : rows) {
                 Users user = new Users(
-                    Long.parseLong(row[0]), row[1], row[2], row[3], row[4], LocalDate.parse(row[5])
+                     row[1], row[2], row[3], row[4], LocalDate.parse(row[5])
                 );
                 userRepo.save(user);
             }

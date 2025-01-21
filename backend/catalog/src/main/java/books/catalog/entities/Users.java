@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -12,6 +14,7 @@ import jakarta.persistence.OneToMany;
 public class Users {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String username;
     private String password;
@@ -24,8 +27,8 @@ public class Users {
 
     public Users() {}
 
-    public Users(long id, String username, String password, String email, String role, LocalDate created_at) {
-        this.id = id;
+    public Users(String username, String password, String email, String role, LocalDate created_at) {
+
         this.username = username;
         this.password = password;
         this.email = email;
