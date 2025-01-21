@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { catchError, map, Observable, of } from 'rxjs';
+import {  map, Observable} from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthService {
           localStorage.setItem('token', response.token);
           return true;
         } 
-        else  return false;
+        else return false;
       })
     );
   }
@@ -34,7 +34,14 @@ export class AuthService {
           this.router.navigate(['/']);
       });
     }
+  }
 
-
+  register(credentials: any): Observable<boolean> {
+    return this.apiService.createUser(credentials).pipe(
+      map(response => {
+        console.log(response);
+        return response.status === 200;
+      })
+    );
   }
 }

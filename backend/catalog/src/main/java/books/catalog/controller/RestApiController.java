@@ -21,6 +21,8 @@ import books.catalog.service.AuthorService;
 import books.catalog.service.BookService;
 import books.catalog.service.UsersService;
 import books.catalog.utils.JwtGenerator;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -83,6 +85,12 @@ public class RestApiController {
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @PutMapping("/user")
+    public ResponseEntity<Void> createUser(@RequestBody Users newUser) {
+        usersService.updateUser(newUser);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @PostMapping("/user")

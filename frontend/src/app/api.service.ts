@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from './Book';
 import { User } from './User';
@@ -46,5 +46,9 @@ export class ApiService {
 
   public getAuthorByName(name: string): Observable<Author> {
     return this.http.get<Author>(`${this.api}/authors/${name}`);
+  }
+
+  public createUser(user: User): Observable<HttpResponse<any>> {
+    return this.http.put<any>(`${this.api}/user`, user,  { observe: 'response' });
   }
 }
