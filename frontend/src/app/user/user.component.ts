@@ -3,6 +3,7 @@ import { User } from '../User';
 import { ApiService } from '../api.service';
 import { AuthService } from '../auth.service';
 import { Book } from '../Book';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -18,7 +19,7 @@ export class UserComponent {
   public dropped: number = 0;
   //public reread: number = 0;
   
-  constructor(private apiServ: ApiService, private authServ: AuthService) {}
+  constructor(private apiServ: ApiService, private authServ: AuthService, private router: Router) {}
 
   ngOnInit() {
     const token = this.authServ.isLoggedIn();
@@ -29,6 +30,7 @@ export class UserComponent {
           this.calculateStats();
         } else {
           this.authServ.logout();
+          this.router.navigate(['/login']);
         }
       });
     }
