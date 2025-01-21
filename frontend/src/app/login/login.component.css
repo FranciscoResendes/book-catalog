@@ -49,3 +49,9 @@ i:hover, i:focus {
     color: #FFA500;
     cursor: pointer;
 }
+.error-msg{
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
