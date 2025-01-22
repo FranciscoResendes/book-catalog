@@ -1,0 +1,57 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    margin: 10% auto;
+}
+h1 {
+    text-align: center;
+}
+
+h1, label,button{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+label{
+    margin: 10px 0px;
+    text-align: left;
+    font-size: larger;
+    font-weight: bold;
+    color: rgb(247, 234, 62);
+    font-style: italic;
+}
+
+input{
+    width: 300px;
+    height: 25px;
+}
+
+button{
+    width: 310px;
+    height: 30px;
+    margin-top: 20px;
+    background-color: #FFD700;
+    font-size: large;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #FFA500;
+}
+
+i {
+    background-color: black;
+    color: #FFD700;
+    font-size: 100px;
+}
+
+i:hover, i:focus {
+    color: #FFA500;
+    cursor: pointer;
+}
+.error-msg{
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
