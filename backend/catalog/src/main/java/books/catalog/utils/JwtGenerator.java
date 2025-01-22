@@ -2,17 +2,17 @@ package books.catalog.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
 
 public class JwtGenerator {
 
     //private static final long EXPIRATION_TIME = 3600000; // 1 hour in milliseconds
-    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256); // Generate a secure key
+    private static final Key SECRET_KEY = Keys.hmacShaKeyFor(Base64.getDecoder().decode("jJzZW3j6U8cnnxWZBm4GulO07wGwiG/6Sv2WRsm+ZhY=")); // Generate a secure key
 
     public static String generateSessionId() {
         UUID uuid = UUID.randomUUID(); // Generates a random UUID
