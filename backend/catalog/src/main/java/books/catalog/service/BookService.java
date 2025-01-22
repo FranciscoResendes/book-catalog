@@ -28,4 +28,11 @@ public class BookService {
     public Book getBookByIsbn(String isbn) {
         return bookRepository.findByIsbn(isbn);
     }
+
+    public List<Book> getBooksByQuery(String query) {
+        List<Book> allBooks = bookRepository.findAll();
+        return allBooks.stream()
+            .filter(book -> book.getTitle().toLowerCase().contains(query.toLowerCase()))
+            .toList();
+    }
 }
