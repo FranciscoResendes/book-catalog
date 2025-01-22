@@ -1,5 +1,5 @@
 <div *ngIf="chosenBook" id="book-detail">
     <img [src]="chosenBook.cover" alt="">
     <h1>{{chosenBook.title}}</h1>
-    <p>Author: {{chosenBook.author.name}}</p>
+    <p>Author: <a routerLink="/author/{{chosenBook.author.name}}">{{chosenBook.author.name}}</a></p>
 </div>

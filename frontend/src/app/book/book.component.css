@@ -14,3 +14,7 @@ img{
     height: 300px;
     grid-area: img;
 }
+
+a{
+    color: #FFD700;
+}
