@@ -1,4 +1,4 @@
-<div id="author-detail">
+<div id="author-detail" *ngIf="chosenAuthor">
     <img [src]="chosenAuthor.photo" alt="">
     <h1>{{chosenAuthor.name}}</h1>
     <p>Birth: {{chosenAuthor.born}}</p>
