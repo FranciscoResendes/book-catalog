@@ -12,6 +12,7 @@ import { BookComponent } from './book/book.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     BookComponent,
     AuthorComponent,
     AuthorDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
