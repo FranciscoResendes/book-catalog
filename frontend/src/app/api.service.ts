@@ -51,4 +51,8 @@ export class ApiService {
   public createUser(user: User): Observable<HttpResponse<any>> {
     return this.http.put<any>(`${this.api}/user`, user,  { observe: 'response' });
   }
+
+  public searchBooks(query: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.api}/books/search/${query}`);
+  }
 }

@@ -71,7 +71,12 @@ public class RestApiController {
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
 
+    @GetMapping("books/search/{query}")
+    public ResponseEntity<List<Book>> searchBooksByQuery(@PathVariable String query) {
+        List<Book> books = bookService.getBooksByQuery(query);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
     
 
