@@ -3,8 +3,10 @@
   <a routerLink="/authors">Authors </a>
   <a *ngIf="!this.authService.isLoggedIn()" routerLink="/login">Login </a>
   <a *ngIf="this.authService.isLoggedIn()" (click)="this.authService.logout()" routerLink="/login">Logout </a>
-  <a routerLink="/register">Register</a>
+  <a *ngIf="!this.authService.isLoggedIn()" routerLink="/register">Register</a>
   <a routerLink="/user">User page </a>
-  <input type="text" placeholder="Search">
+  <input type="text" placeholder="Search" [(ngModel)]="searchText">
+  <button (click)="search()"><img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt=""></button>
 </nav>
 <router-outlet></router-outlet>
+<app-search [searchResults]="searchResults"></app-search>
