@@ -33,7 +33,7 @@ export class ApiService {
 
   public addBook(jwt: string, book: Book): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', jwt);
-    return this.http.post<any>(`${this.api}/books`, book, { headers });
+    return this.http.put<any>(`${this.api}/books`, book, { headers });
   }
 
   public getBookByIsbn(isbn: string): Observable<Book> {
@@ -49,7 +49,7 @@ export class ApiService {
   }
 
   public createUser(user: User): Observable<HttpResponse<any>> {
-    return this.http.put<any>(`${this.api}/user`, user,  { observe: 'response' });
+    return this.http.post<any>(`${this.api}/user/new`, user,  { observe: 'response' });
   }
 
   public searchBooks(query: string): Observable<Book[]> {

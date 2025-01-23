@@ -48,7 +48,7 @@ public class RestApiController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @PostMapping("/books")
+    @PutMapping("/books")
     public ResponseEntity<String> addBook(@RequestHeader("Authorization") String jwt, @RequestBody Book book) {
         String sessionId = JwtGenerator.getSessionIdFromJwt(jwt);
         Users user = usersService.checkSessionId(sessionId);
@@ -92,7 +92,7 @@ public class RestApiController {
         }
     }
 
-    @PutMapping("/user")
+    @PostMapping("/user/new")
     public ResponseEntity<Void> createUser(@RequestBody Users newUser) {
         usersService.updateUser(newUser);
         return new ResponseEntity<>( HttpStatus.OK);
