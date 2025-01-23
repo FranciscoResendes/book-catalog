@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../api.service';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -19,8 +18,8 @@ export class LoginComponent {
       username: form.value.username,
       password: form.value.password
     };
-    this.authService.login(credentials).subscribe(isValid => {
-      if (!isValid) {
+    this.authService.login(credentials).subscribe(response => {
+      if (!response) {
         this.invalidLogin = true;
       }
       else this.router.navigate(['/user']);
