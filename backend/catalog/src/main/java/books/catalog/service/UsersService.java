@@ -24,8 +24,8 @@ public class UsersService {
         return usersRepository.findBySessionId(sessionId);
     }
 
-    public void updateUser(Users user) {
-        usersRepository.save(user);
+    public Users updateUser(Users user) {
+        return usersRepository.save(user);
     }
 
     public String createJwt(){
