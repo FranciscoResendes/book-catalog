@@ -25,5 +25,7 @@ public class LoginSteps {
 
     @Then("I am Successfully logged in")
     public void isLoggedIn() {
+        loginPage.checkLoginSuccess();
+        DriverManager.closeDriver(driver);
     }
 }
