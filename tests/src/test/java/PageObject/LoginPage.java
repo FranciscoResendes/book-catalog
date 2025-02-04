@@ -52,7 +52,8 @@ public class LoginPage {
     }
 
     public void logout() {
-        driver.findElement(By.xpath(LOGIN_BUTTON)).click();
+        WebElement logoutButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOGOUT)));
+        logoutButton.click();
     }
 
     public void checkLoginSuccess() {  
