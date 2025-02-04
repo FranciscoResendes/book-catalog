@@ -18,14 +18,20 @@ public class LoginSteps {
         loginPage.goToLoginPage();
     }
 
-    @When("I fill the username field with {string} and {string}")
+    @When("I fill the fields with {string} and {string}")
     public void sendCredentials(String username, String password) {
         loginPage.enterLoginCredentials(username, password);
     }
 
-    @Then("I am Successfully logged in")
+    @Then("I am successfully logged in")
     public void isLoggedIn() {
         loginPage.checkLoginSuccess();
+        DriverManager.closeDriver(driver);
+    }
+
+    @Then("I am not logged in")
+    public void isNotLoggedIn() {
+        loginPage.checkLoginFail();
         DriverManager.closeDriver(driver);
     }
 }

@@ -1,9 +1,9 @@
-Feature: Login with diferent credentials
+Feature: Login with different credentials
 
-  Scenario: Successful login
+  Scenario Outline: Successful login
     Given I am in the login page
-    When I fill the username field with "<username>" and "<password>"
-    Then I am Successfully logged in
+    When I fill the fields with "<username>" and "<password>"
+    Then I am successfully logged in
 
     Examples:
       | username | password |
