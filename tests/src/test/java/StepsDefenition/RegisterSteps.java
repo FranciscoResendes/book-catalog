@@ -30,7 +30,7 @@ public class RegisterSteps {
     }
 
     @Then("I am not registered")
-    public void isNotRegisterd() {
+    public void isNotRegistered() {
         //loginPage.checkRegisterFail();
         DriverManager.closeDriver(driver);
     }
